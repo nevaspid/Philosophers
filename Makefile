@@ -6,11 +6,11 @@
 #    By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 13:47:52 by gloms             #+#    #+#              #
-#    Updated: 2023/10/17 19:31:34 by gloms            ###   ########.fr        #
+#    Updated: 2023/10/27 20:44:16 by gloms            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	philosophers
+NAME		:=	philo
 
 # ------------------------------ Sources -----------------------------
 
@@ -21,7 +21,7 @@ SRCS		:=	srcs/main.c \
 				srcs/utils/ft_lstadd_back.c \
 				srcs/utils/ft_lstnew.c \
 				srcs/utils/do_circular_list.c \
-
+				srcs/time/time_handler.c \
 OBJ_DIR		:=	srcs/.objs
 OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

@@ -6,7 +6,7 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:05:12 by gloms             #+#    #+#             */
-/*   Updated: 2023/10/26 18:29:46 by gloms            ###   ########.fr       */
+/*   Updated: 2023/10/27 17:49:47 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	*philo_routine(void *param)
 	philo = param;
 	usleep(100000);
 	printf("hi ! i am %d !\n", philo->whoami);
+	printf("%d", gettimeofday());
 	return (NULL);
 }
 

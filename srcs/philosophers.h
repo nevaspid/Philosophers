@@ -6,7 +6,7 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:43:08 by gloms             #+#    #+#             */
-/*   Updated: 2023/10/17 19:30:29 by gloms            ###   ########.fr       */
+/*   Updated: 2023/10/27 20:40:03 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <libc.h>
 
 		/*-------------STRUCTS-------------*/
 
