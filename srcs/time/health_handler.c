@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_handler.c                                     :+:      :+:    :+:   */
+/*   health_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 20:35:12 by gloms             #+#    #+#             */
-/*   Updated: 2023/10/30 17:47:22 by gloms            ###   ########.fr       */
+/*   Created: 2023/10/28 19:22:01 by gloms             #+#    #+#             */
+/*   Updated: 2023/10/30 14:25:44 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	get_time(void)
+int	death_check(t_philo *philo, t_gestion *monitor)
 {
-	static struct timeval	t;
-
-	gettimeofday(&t, NULL);
-	return ((t.tv_sec * 1000) + (t.tv_usec / 1000));
-}
-
-int	time_since_start(t_gestion *monitor)
-{
-	return (get_time() - monitor->start_time);
+	monitor->start_time = get_time();
+	while (philo->amidead == 0)
+		philo = philo->next;
+	printf("philo %d is DEAD\n", philo->whoami);
+	return (1);
 }
