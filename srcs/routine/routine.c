@@ -6,13 +6,13 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:51:23 by gloms             #+#    #+#             */
-/*   Updated: 2023/11/03 16:45:10 by gloms            ###   ########.fr       */
+/*   Updated: 2023/11/03 19:44:30 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	do_i_start(t_philo *philo)
+void	do_i_start(t_philo *philo)
 {
 	while (1)
 	{
@@ -25,27 +25,52 @@ int	do_i_start(t_philo *philo)
 		pthread_mutex_unlock(&philo->monitor->start_time_mutex);
 		usleep(100);
 	}
+	if (philo->whoami % 2 != 0)
+		ft_sleep(philo->monitor->time_to_eat, philo->monitor);
 }
 
-void philo_eating(t_philo *philo)
+int	philo_eating(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->fork);
-	printf("%lld %d has taken a fork\n", time_since_start, philo->whoami);
+	printf("%lld %d has taken a fork\n", actual_time(philo->monitor),
+		philo->whoami);
 	pthread_mutex_lock(&philo->next->fork);
-	printf("%lld %d has taken a fork\n", time_since_start, philo->whoami);
-	ft_sleep(philo->monitor->time_to_eat);
+	printf("%lld %d has taken a fork\n", actual_time(philo->monitor),
+		philo->whoami);
+	printf("%lld %d is eating\n", actual_time(philo->monitor),
+		philo->whoami);
+	ft_sleep(philo->monitor->time_to_eat, philo->monitor);
+	if (actual_time(philo->monitor)
+		- philo->last_meal_time > philo->monitor->time_to_die)
+	{
+		philo->amidead = 1;
+		printf("%lld %d has died\n", actual_time(philo->monitor),
+			philo->whoami);
+		return (1);
+	}
+	philo->last_meal_time = actual_time(philo->monitor);
 	pthread_mutex_unlock(&philo->next->fork);
 	pthread_mutex_unlock(&philo->fork);
+	return (0);
 }
 
-void philo_sleep(t_philo *philo)
+void	philo_sleep(t_philo *philo)
 {
-
+	ft_sleep(philo->monitor->time_to_sleep, philo->monitor);
+	// if (actual_time(philo->monitor)
+	// 	- philo->last_meal_time > philo->monitor->time_to_die)
+	// {
+	// 	philo->amidead = 1;
+	// 	printf("%lld %d has died\n", actual_time(philo->monitor),
+	// 		philo->whoami);
+	// 	return ;
+	// }
 }
 
-void philo_think(t_philo *philo)
+void	philo_think(t_philo *philo)
 {
-
+	printf("%lld %d is thinking", actual_time(philo->monitor),
+		philo->whoami);
 }
 
 void	*philo_routine(void *param)
@@ -53,13 +78,12 @@ void	*philo_routine(void *param)
 	t_philo	*philo;
 
 	philo = param;
-
 	do_i_start(philo);
-
-	while (1)
+	while (philo->amidead != 1)
 	{
 		philo_eating(philo);
 		philo_sleep(philo);
 		philo_think(philo);
 	}
+	return (0);
 }

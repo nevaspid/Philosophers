@@ -6,7 +6,7 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:43:08 by gloms             #+#    #+#             */
-/*   Updated: 2023/11/01 22:25:56 by gloms            ###   ########.fr       */
+/*   Updated: 2023/11/03 19:12:42 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 
 typedef struct s_gestion
 {
-	int					start_time;
+	long long int		start_time;
 	int					number_of_philosophers;
 	int					time_to_die;
 	int					time_to_eat;
 	int					time_to_sleep;
 	int					number_of_meals;
+	pthread_mutex_t		tts;
 	pthread_mutex_t		start_time_mutex;
 }						t_gestion;
 
@@ -39,6 +40,7 @@ typedef struct s_philo
 	int					whoami;
 	int					amidead;
 	int					meals_eaten;
+	int					last_meal_time;
 	pthread_mutex_t		meals_eaten_mutx;
 	pthread_mutex_t		fork;
 	struct s_gestion	*monitor;
@@ -64,9 +66,10 @@ void					help_input(void);
 
 /*--------------TIME--------------*/
 
-int						get_time(void);
-int						time_since_start(t_gestion *monitor);
+long long int			get_time(void);
+long long int			actual_time(t_gestion *monitor);
 int						death_check(t_philo *philo, t_gestion *monitor);
+void					ft_sleep(int t_eat, t_gestion *monitor);
 
 /*------------ROUTINE------------*/
 

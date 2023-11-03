@@ -6,7 +6,7 @@
 #    By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 13:47:52 by gloms             #+#    #+#              #
-#    Updated: 2023/11/01 21:53:41 by gloms            ###   ########.fr        #
+#    Updated: 2023/11/03 19:03:02 by gloms            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 # ------------------------------ Flags -------------------------------
 
 CC			:=	gcc
-FLAGS		:=	-Wall -Wextra -Werror -g3 #-fsanitize=address
+FLAGS		:=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 $(OBJ_DIR)/%.o :%.c
 	@ mkdir -p $(dir $@)
