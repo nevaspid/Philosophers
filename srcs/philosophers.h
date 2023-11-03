@@ -6,7 +6,7 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:43:08 by gloms             #+#    #+#             */
-/*   Updated: 2023/11/03 19:12:42 by gloms            ###   ########.fr       */
+/*   Updated: 2023/11/03 22:54:19 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_gestion
 	int					time_to_eat;
 	int					time_to_sleep;
 	int					number_of_meals;
-	pthread_mutex_t		tts;
+	int					dead;
+	pthread_mutex_t		deadd;
 	pthread_mutex_t		start_time_mutex;
 }						t_gestion;
 

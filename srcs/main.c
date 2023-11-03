@@ -6,7 +6,7 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:05:12 by gloms             #+#    #+#             */
-/*   Updated: 2023/11/03 21:32:27 by gloms            ###   ########.fr       */
+/*   Updated: 2023/11/03 22:49:19 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	init_monitor(t_gestion *monitor, char **av)
 	monitor->time_to_die = ft_atoi(av[2]);
 	monitor->time_to_eat = ft_atoi(av[3]);
 	monitor->time_to_sleep = ft_atoi(av[3]);
+	monitor->dead = 0;
 	if (av[4])
 		monitor->number_of_meals = ft_atoi(av[4]);
 }
