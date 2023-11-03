@@ -6,7 +6,7 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:51:23 by gloms             #+#    #+#             */
-/*   Updated: 2023/11/03 19:44:30 by gloms            ###   ########.fr       */
+/*   Updated: 2023/11/03 21:54:44 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,14 @@ int	philo_eating(t_philo *philo)
 
 void	philo_sleep(t_philo *philo)
 {
+	printf("%lld %d is sleeping\n", actual_time(philo->monitor),
+		philo->whoami);
 	ft_sleep(philo->monitor->time_to_sleep, philo->monitor);
-	// if (actual_time(philo->monitor)
-	// 	- philo->last_meal_time > philo->monitor->time_to_die)
-	// {
-	// 	philo->amidead = 1;
-	// 	printf("%lld %d has died\n", actual_time(philo->monitor),
-	// 		philo->whoami);
-	// 	return ;
-	// }
 }
 
 void	philo_think(t_philo *philo)
 {
-	printf("%lld %d is thinking", actual_time(philo->monitor),
+	printf("%lld %d is thinking\n", actual_time(philo->monitor),
 		philo->whoami);
 }
 

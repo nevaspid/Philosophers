@@ -6,7 +6,7 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:05:12 by gloms             #+#    #+#             */
-/*   Updated: 2023/11/03 19:13:37 by gloms            ###   ########.fr       */
+/*   Updated: 2023/11/03 21:32:27 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	init_philos(t_philo *philo, t_gestion *monitor, char **av)
 	while (i < ft_atoi(av[1]))
 	{
 		philo->monitor = monitor;
+		philo->last_meal_time = 0;
 		philo->amidead = 0;
 		pthread_create(&philo_threads[i], NULL, philo_routine, (void *)philo);
 		philo = philo->next;
