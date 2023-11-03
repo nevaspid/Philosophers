@@ -1,5 +1,9 @@
 GET_TIME
 
+- time_to_die reset a chaque repas
+- il faut un current time
+
+
 FT_USLEEP
 
 - c
