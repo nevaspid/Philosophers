@@ -6,36 +6,36 @@
 /*   By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:05:12 by gloms             #+#    #+#             */
-/*   Updated: 2023/10/31 22:40:35 by gloms            ###   ########.fr       */
+/*   Updated: 2023/11/01 22:26:17 by gloms            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*philo_routine(void *param)
-{
-	t_philo	*philo;
-	int		i;
-	int		j;
+// void	*philo_routine(void *param)
+// {
+// 	t_philo	*philo;
+// 	int		i;
+// 	int		j;
 
-	j = 0;
-	i = 0;
-	philo = param;
-	randomize(&i, philo->whoami);
-	printf("%d\n", philo->monitor->start_time);
-	while (philo->monitor->start_time == -1)
-		;
-	while (j != i)
-	{
-		usleep(800 * 1000);
-		printf("%d %d is living his life\n", time_since_start(philo->monitor),
-			philo->whoami);
-		j++;
-	}
-	philo->amidead = 1;
-	printf("i am %d an i am dead\n", philo->whoami);
-	return (NULL);
-}
+// 	j = 0;
+// 	i = 0;
+// philo = param;
+// randomize(&i, philo->whoami);
+// 	printf("%d\n", philo->monitor->start_time);
+// 	while (philo->monitor->start_time == -1)
+// 		;
+// 	while (j != i)
+// 	{
+// 		usleep(800 * 1000);
+// 		printf("%d %d is living his life\n", time_since_start(philo->monitor),
+// 			philo->whoami);
+// 		j++;
+// 	}
+// 	philo->amidead = 1;
+// 	printf("i am %d an i am dead\n", philo->whoami);
+// 	return (NULL);
+// }
 
 void	init_philos(t_philo *philo, t_gestion *monitor, char **av)
 {

@@ -6,7 +6,7 @@
 #    By: gloms <rbrendle@student.42mulhouse.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 13:47:52 by gloms             #+#    #+#              #
-#    Updated: 2023/10/28 19:59:26 by gloms            ###   ########.fr        #
+#    Updated: 2023/11/01 21:53:41 by gloms            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS		:=	srcs/main.c \
 				srcs/utils/do_circular_list.c \
 				srcs/time/time_handler.c \
 				srcs/time/health_handler.c \
+				srcs/routine/routine.c \
 				srcs/temp/randomize.c \
 
 OBJ_DIR		:=	srcs/.objs
