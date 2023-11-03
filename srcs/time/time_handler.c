@@ -24,3 +24,14 @@ int	time_since_start(t_gestion *monitor)
 {
 	return (get_time() - monitor->start_time);
 }
+
+void	ft_sleep(int t_eat)
+{
+	long long int	first_time;
+	long long int	end_time;
+
+	first_time = actual_time();
+	end_time = first_time + t_eat;
+	while (actual_time() < end_time)
+		;
+}
